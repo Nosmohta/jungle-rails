@@ -12,6 +12,16 @@ Rails.application.routes.draw do
 
   resources :orders, only: [:create, :show]
 
+  # resource :signup, only: [:new]
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  get '/logout' => 'sessions#destroy'
+
+
+  get '/signup' => 'users#new'
+  resource :users, only: [:create]
+
+
   namespace :admin do
     root to: 'dashboard#show'
     resources :products, except: [:edit, :update, :show]
