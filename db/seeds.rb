@@ -133,4 +133,54 @@ cat3.products.create!({
 })
 
 
+
+
+
+## Review
+
+puts "Re-creating Reviews ..."
+
+Review.destroy_all
+
+Review.create!({
+                    product_id: 1,
+                    user_id: 1,
+                    description: "Hey I really liked this product. best ever",
+                    rating: 5,
+
+                })
+
+Review.create!({
+                    product_id: 1,
+                    user_id: 1,
+                    description: "Worst ever",
+                    rating: 1,
+
+                })
+
+Review.create!({
+                    product_id: 3,
+                    user_id: 1,
+                    description: "Product 3 has my heart",
+                    rating: 5,
+
+                })
+
+Review.create!({
+                    product_id: 3,
+                    user_id: 1,
+                    description: "Worst ever product 3 I've ever had! ",
+                    rating: 5,
+
+                })
+
+Review.create!({
+                    product_id: 2,
+                    user_id: 1,
+                    description: "meh product 2 could have a better interface...",
+                    rating: 5,
+
+                })
+
+
 puts "DONE!"

@@ -26,6 +26,30 @@
       </div>
     </div>
 
+    <div class="row">
+        <h3>
+          Add New review Form!!!
+        </h3>
+    </div>
+
+    <div class="row">
+        <h3>
+          Product Reviews
+        </h3>
+      <p>
+        <% @reviews.each do |review| %>
+          <p>
+            Rating: <%= review.rating %> <br>
+            Description: "<%= review.description %>" <br>
+            Product ID: <%= review.product_id %><br>
+            User ID: <%= review.user_id %><br>
+          </p>
+        <% end %>
+      </p>
+
+    </div>
+
+
   </article>
 
 </section>
