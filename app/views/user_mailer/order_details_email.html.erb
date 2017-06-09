@@ -1,0 +1,22 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+<body>
+<h1>Welcome to the Jungle</h1>
+<p>
+  Thanks for your order of:
+  OrderID <%= @order_id%>
+  <% @order_items.each do |item|%>
+    <p>
+      Item Name: <%= Product.find(item.product_id).name %> Line total: $<%= item.total_price_cents/100 %>
+    </p>
+  <% end %>
+  <p>
+    Order Total: $<%= @order_total/100 %>
+  </p>
+
+</body>
+</html>
