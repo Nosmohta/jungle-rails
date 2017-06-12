@@ -42,38 +42,39 @@
       </div>
     <% end %>
 
-
-    <div class="row">
-        <h3>
-          Product Reviews
-        </h3>
-        <h4>
-          Overall Rating <%= average_product_rating(params[:id]) %>
-        </h4>
-      <table class="table table-bordered">
-        <thead>
-          <tr>
-            <th colspan="1">Rating</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-        <tr>
-          <% @reviews.each do |review| %>
+    <% if !@reviews.empty? %>
+      <div class="row">
+          <h3>
+            Product Reviews
+          </h3>
+          <h4>
+            Overall Rating <%= average_product_rating(params[:id]) %>
+          </h4>
+        <table class="table table-bordered">
+          <thead>
             <tr>
-              <th>
-                 <%= review.rating %>
-              </th>
-              <th>
-                 "<%= review.description %>"
-                <% if current_user && (session[:user_id] == review.user_id) %>
-                    <%= link_to "delete", [@product, review], method: :delete, class: 'btn btn-info' %>
-                <% end %>
-              </th>
+              <th colspan="1">Rating</th>
+              <th>Description</th>
             </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
+          </thead>
+          <tr>
+            <% @reviews.each do |review| %>
+              <tr>
+                <th>
+                   <%= review.rating %>
+                </th>
+                <th>
+                   "<%= review.description %>"
+                  <% if current_user && (session[:user_id] == review.user_id) %>
+                      <%= link_to "delete", [@product, review], method: :delete, class: 'btn btn-info' %>
+                  <% end %>
+                </th>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    <% end %>
 
 
 
