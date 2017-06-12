@@ -2,10 +2,16 @@
 
 <h1>Login</h1>
 
-<%= form_tag '/login' do %>
+<div class="container">
 
-    Email: <%= text_field_tag :email %>
-    Password: <%= password_field_tag :password %>
-    <%= submit_tag "Submit" %>
+  <% flash.each do |key, value| %>
+      <div class="<%= key %>"> <%= value %></div>
+  <% end %>
 
-<% end %>
+  <%= form_tag '/login' do %>
+      Email: <%= text_field_tag :email %>
+      Password: <%= password_field_tag :password %>
+      <%= submit_tag "Submit" %>
+  <% end %>
+
+</div>

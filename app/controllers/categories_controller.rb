@@ -9,8 +9,5 @@ class CategoriesController < ApplicationController
     @products = Product.where(["category_id = ? ", params[:id]])
   end
 
-  def create
-    # Create query
-  end
 
 end

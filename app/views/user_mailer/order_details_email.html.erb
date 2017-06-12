@@ -8,11 +8,11 @@
 <h1>Welcome to the Jungle</h1>
 <p>
   Thanks for your order of:
-  OrderID <%= @order_id%>
+  <br>
   <% @order_items.each do |item|%>
     <p>
       Item Name: <%= Product.find(item.product_id).name %> Line total: $<%= item.total_price_cents/100 %>
-    </p>
+    </p><br>
   <% end %>
   <p>
     Order Total: $<%= @order_total/100 %>

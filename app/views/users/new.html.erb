@@ -1,14 +1,21 @@
 <!-- app/views/users/new.html.erb -->
 
 <h1>Signup!</h1>
+  <div class="container">
+    <% flash.each do |key, value| %>
+        <div class="<%= key %>"> <%= value %></div>
+    <% end %>
 
-<%= form_for :user, url: '/users' do |f| %>
+    <%= yield %>
 
-    Name: <%= f.text_field :name %>
-    Email: <%= f.text_field :email %>
-    Password: <%= f.password_field :password %>
-    Password Confirmation: <%= f.password_field :password_confirmation %>
-    <%= f.submit "Submit" %>
+    <%= form_for :user, url: '/users' do |f| %>
+        Name: <%= f.text_field :name %>
+        Email: <%= f.text_field :email %>
+        Password: <%= f.password_field :password %>
+        Password Confirmation: <%= f.password_field :password_confirmation %>
+        <%= f.submit "Submit" %>
+    <% end %>
 
-<% end %>
+  </div>
+
 

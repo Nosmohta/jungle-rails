@@ -23,31 +23,58 @@
           <dt>Price</dt>
           <dd><%= @product.price %></dd>
         </dl>
+
+
       </div>
     </div>
 
-    <div class="row">
+    <% if current_user && current_user.id == session[:user_id] %>
+      <div class="row">
         <h3>
-          Add New review Form!!!
+          Add a New review
         </h3>
-    </div>
+        <%= form_for([@product, @new_review])  do |f| %>
+          Star Rating: <%= f.select :rating, @rating_options %><br>
+          Description: <%= f.text_area :description %><br>
+          <%= f.submit %>
+
+        <% end %>
+      </div>
+    <% end %>
+
 
     <div class="row">
         <h3>
           Product Reviews
         </h3>
-      <p>
-        <% @reviews.each do |review| %>
-          <p>
-            Rating: <%= review.rating %> <br>
-            Description: "<%= review.description %>" <br>
-            Product ID: <%= review.product_id %><br>
-            User ID: <%= review.user_id %><br>
-          </p>
-        <% end %>
-      </p>
-
+        <h4>
+          Overall Rating <%= average_product_rating(params[:id]) %>
+        </h4>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th colspan="1">Rating</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tr>
+          <% @reviews.each do |review| %>
+            <tr>
+              <th>
+                 <%= review.rating %>
+              </th>
+              <th>
+                 "<%= review.description %>"
+                <% if current_user && (session[:user_id] == review.user_id) %>
+                    <%= link_to "delete", [@product, review], method: :delete, class: 'btn btn-info' %>
+                <% end %>
+              </th>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
+
 
 
   </article>

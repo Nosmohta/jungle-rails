@@ -5,11 +5,12 @@ class SessionsController < ApplicationController
 
   def create
     user = User.find_by_email(params[:email])
+
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to '/'
+      redirect_to '/products'
     else
-      redirect_to '/login'
+      redirect_to '/login', notice: "Invalid login Email and/or Password"
     end
   end
 
